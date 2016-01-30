@@ -52,4 +52,5 @@ public class ResourceManager : MonoBehaviour {
 			transform.position += new Vector3(-(1 + Random.value) * speed, 0, -(1 + Random.value) * speed);
 		}
 	}
+	
 }
