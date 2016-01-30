@@ -15,7 +15,7 @@ public class CollectResource : MonoBehaviour {
 	
 	// Increment counter; destroy resource
 	void OnTriggerEnter(Collider other) {
-		float minYPos = transform.parent.gameObject.GetComponent<ResourceMovement>().getBaseHeight();
+		float minYPos = transform.parent.gameObject.GetComponent<ResourceManager>().getBaseHeight();
 		if (transform.position.y < (2 * minYPos) && other.gameObject.transform.parent.tag == "Player") {
 			Debug.Log("Caught you");
 			
@@ -24,7 +24,7 @@ public class CollectResource : MonoBehaviour {
 			
 			// Update overworld resource count
 			GameObject helper = GameObject.FindWithTag("ResourceController");	
-			helper.GetComponent<ResourceManager>().collectResource();
+			helper.GetComponent<ResourceSpawner>().collectResource();
 			
 			// Despawn resource if collected
 			if (collected) {

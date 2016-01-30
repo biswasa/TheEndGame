@@ -6,6 +6,9 @@ TagManager:
   tags:
   - ResourceController
   - New Tag
+  - Resource
+  - Environment
+  - Tower
   layers:
   - Default
   - TransparentFX
