@@ -27,6 +27,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454974}
+  - 114: {fileID: 11458006}
   m_Layer: 0
   m_Name: ResourceObject
   m_TagString: Resource
@@ -107,6 +108,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &11458006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04850977700c346b999d7d19fb567187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13529728
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -117,7 +129,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -144,7 +156,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Radius
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x

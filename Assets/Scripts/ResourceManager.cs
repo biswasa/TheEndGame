@@ -33,6 +33,8 @@ public class ResourceManager : MonoBehaviour {
 		if(spawnedResource != null) {
 			resources++;
 			lastRespawn = Time.time;
+		} else {
+			Debug.Log ("I don't exist");
 		}
 	}
 		
