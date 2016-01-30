@@ -4,24 +4,32 @@ using System.Collections;
 public class CollectResource : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update() {
 	
 	}
 	
 	// Increment counter; destroy resource
 	void OnTriggerEnter(Collider other) {
-		Debug.Log(other.tag);
-		if (other.tag == "Player") {
+		float minYPos = transform.parent.gameObject.GetComponent<ResourceMovement>().getBaseHeight();
+		if (transform.position.y < (2 * minYPos) && other.gameObject.transform.parent.tag == "Player") {
 			Debug.Log("Caught you");
+			
+			// Check whether resource can be collected; collect if possible
+			bool collected = other.gameObject.transform.parent.GetComponent<PlayerManager>().getResource();
+			
+			// Update overworld resource count
 			GameObject helper = GameObject.FindWithTag("ResourceController");	
-			--(helper.GetComponent<ResourceManager>().resources); // Consider making public function, hide variable
-			// Increment player's resources here
-			Destroy(transform.parent.gameObject);
+			helper.GetComponent<ResourceManager>().collectResource();
+			
+			// Despawn resource if collected
+			if (collected) {
+				Destroy(transform.parent.gameObject);	
+			}	
 		}
 	}
 }

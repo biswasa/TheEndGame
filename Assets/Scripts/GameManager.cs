@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		// Make sure spawner is not out of bounds
+		resourceSpawner.GetComponent<ResourceManager>().reset(mapBounds);
 	}
 		
 }

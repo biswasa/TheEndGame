@@ -37,4 +37,13 @@ public class PlayerManager : MonoBehaviour {
 		
 		transform.position += moveVector;
 	}
+	
+	public bool getResource() {
+		if (currResources < MAX_RESOURCES) {
+			++currResources;
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

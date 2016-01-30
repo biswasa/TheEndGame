@@ -23,4 +23,8 @@ public class ResourceMovement : MonoBehaviour {
 		transform.position += Vector3.down * fallSpeed * Time.deltaTime;
 		transform.Rotate(Vector3.right * Time.deltaTime);
 	}	
+	
+	public float getBaseHeight() {
+		return BASE_HEIGHT;
+	}
 }

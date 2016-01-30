@@ -3,18 +3,22 @@ using System.Collections;
 
 public class ResourceManager : MonoBehaviour {
 
-	public Transform resourcePrefab;	
-	public int resources;
+	public Transform resourcePrefab;		
+	private Vector3 initialPosition;
 	
 	private const float MIN_RESPAWN_TIME = 10.0f;
+	
 	private float resourceSpawnerSpeed = 15.0f;
 	private int maxResources = 5;
+	private int resources;
+	
 	private float lastRespawn;
 
 	// Use this for initialization
 	void Start () {
 		resources = 0;	
 		lastRespawn = Time.time;
+		initialPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -31,7 +35,7 @@ public class ResourceManager : MonoBehaviour {
 		
 		// Sanity checking
 		if(spawnedResource != null) {
-			resources++;
+			++resources;
 			lastRespawn = Time.time;
 		} else {
 			Debug.Log ("I don't exist");
@@ -51,6 +55,18 @@ public class ResourceManager : MonoBehaviour {
 		} else {
 			transform.position += new Vector3(-(1 + Random.value) * speed, 0, -(1 + Random.value) * speed);
 		}
+	}
+	
+	// Fix for unexpected phasing behavior
+	public void reset(float bound) {
+		if ((Mathf.Abs(transform.position.x) > bound) || (Mathf.Abs(transform.position.z) > bound)) {
+			transform.position = initialPosition;
+		}
+	}
+	
+	// Called when player collects a resource
+	public void collectResource() {
+		--resources	;
 	}
 	
 }
