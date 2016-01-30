@@ -144,7 +144,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalPosition.z
@@ -172,7 +172,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.z
@@ -180,7 +180,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2309596, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_UseLightProbes
@@ -241,7 +241,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalPosition.z
@@ -269,7 +269,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.z
@@ -277,7 +277,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2309596, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_UseLightProbes
@@ -416,7 +416,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 435414, guid: 0ecad92cdcbde428e89bee643d7cf765, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 435414, guid: 0ecad92cdcbde428e89bee643d7cf765, type: 2}
       propertyPath: m_LocalPosition.z
@@ -441,6 +441,10 @@ Prefab:
     - target: {fileID: 435414, guid: 0ecad92cdcbde428e89bee643d7cf765, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 435414, guid: 0ecad92cdcbde428e89bee643d7cf765, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ecad92cdcbde428e89bee643d7cf765, type: 2}
@@ -544,7 +548,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865971677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22493645}
@@ -563,7 +567,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalPosition.z
@@ -591,7 +595,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.z
@@ -599,7 +603,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2309596, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_UseLightProbes
@@ -629,7 +633,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalPosition.z
@@ -657,7 +661,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.z
@@ -665,7 +669,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454454, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2309596, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
       propertyPath: m_UseLightProbes
