@@ -3,13 +3,13 @@ using System.Collections;
 
 public class ResourceManager : MonoBehaviour {
 
-	public Transform resourcePrefab;
+	public Transform resourcePrefab;	
+	public int resources;
 	
 	private const float MIN_RESPAWN_TIME = 10.0f;
 	private float resourceSpawnerSpeed = 15.0f;
 	private int maxResources = 5;
-	public int resources;
-	public float lastRespawn;
+	private float lastRespawn;
 
 	// Use this for initialization
 	void Start () {

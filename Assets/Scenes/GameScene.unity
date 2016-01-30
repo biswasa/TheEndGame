@@ -291,6 +291,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 10dcc2ebaa9c948a8aee8e640f39b118, type: 2}
+    - target: {fileID: 197458, guid: 84789920e37bc402d8b8acbab24ef52b, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5842746, guid: 84789920e37bc402d8b8acbab24ef52b, type: 2}
     - {fileID: 5064162, guid: 84789920e37bc402d8b8acbab24ef52b, type: 2}
@@ -430,6 +434,10 @@ Prefab:
     - target: {fileID: 405918, guid: 1ba65e353d9094379a3c890c0db300b1, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 172106, guid: 1ba65e353d9094379a3c890c0db300b1, type: 2}
+      propertyPath: m_TagString
+      value: ResourceController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ba65e353d9094379a3c890c0db300b1, type: 2}

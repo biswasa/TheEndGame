@@ -12,6 +12,7 @@ GameObject:
   - 135: {fileID: 13529728}
   - 23: {fileID: 2331450}
   - 54: {fileID: 5420640}
+  - 114: {fileID: 11413974}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -27,7 +28,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454974}
-  - 114: {fileID: 11458006}
+  - 114: {fileID: 11401516}
   m_Layer: 0
   m_Name: ResourceObject
   m_TagString: Resource
@@ -108,7 +109,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11458006
+--- !u!114 &11401516
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -117,6 +118,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04850977700c346b999d7d19fb567187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11413974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32a8a3bc870a4ef991e57aa50c3b588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &13529728
@@ -166,6 +178,11 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: helper
+      value: 
+      objectReference: {fileID: 11499232, guid: 1ba65e353d9094379a3c890c0db300b1,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 145484}

@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Resource
+  - ResourceController
+  - New Tag
   layers:
   - Default
   - TransparentFX

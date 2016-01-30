@@ -18,16 +18,9 @@ public class ResourceMovement : MonoBehaviour {
 		}
 	}
 	
+	// Kinematic control of descent to ground
 	void fall() {
 		transform.position += Vector3.down * fallSpeed * Time.deltaTime;
 		transform.Rotate(Vector3.right * Time.deltaTime);
-	}
-	
-	void OnTriggerEnter(Collider other) {
-		Debug.Log("Caught you");
-		if (other.tag == "Player") {
-			--(this.GetComponentInParent<ResourceManager>().resources);
-			Destroy(gameObject);
-		}
-	}
+	}	
 }

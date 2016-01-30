@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
-
-	public ResourceManager helper;
+public class CollectResource : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,10 +13,14 @@ public class NewBehaviourScript : MonoBehaviour {
 	
 	}
 	
+	// Increment counter; destroy resource
 	void OnTriggerEnter(Collider other) {
-		Debug.Log("Caught you");
+		Debug.Log(other.tag);
 		if (other.tag == "Player") {
-			--helper.resources;	
+			Debug.Log("Caught you");
+			GameObject helper = GameObject.FindWithTag("ResourceController");	
+			--(helper.GetComponent<ResourceManager>().resources); // Consider making public function, hide variable
+			// Increment player's resources here
 			Destroy(transform.parent.gameObject);
 		}
 	}
