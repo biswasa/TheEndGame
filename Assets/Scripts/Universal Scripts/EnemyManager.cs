@@ -52,6 +52,7 @@ public class EnemyManager : MonoBehaviour {
 				Debug.Log("Assigned"); // THIS IS WHERE I CONTINUE; NULL REFERENCE SOMEWHERE
 				hasTarget = true;	
 				target = temp;
+				targetTag = target.transform.parent.gameObject.tag;
 			} else { // Target already acquired; give priority to tower
 				if (checkTag == "Tower") {
 					target = temp;
@@ -63,6 +64,7 @@ public class EnemyManager : MonoBehaviour {
 				if (targetTag == checkTag) { 
 					hasTarget = false;
 					target = null;
+					targetTag = "";
 				} else { // Prior target is still in range
 					hasTarget = true;
 				}
