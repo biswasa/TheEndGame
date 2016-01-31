@@ -10,8 +10,10 @@ public class EnemyManager : MonoBehaviour {
 	private float movementSpeed = 5.0f;
 	private float attackPower = 3.0f;
 	private float currHealth;
+	private float motionStartTime;
 	private float attackStartTime;
 	private bool hasTarget; // Currently pursing player or tower
+	private bool moving; // Movement cycles in process
 	private bool attacking; // Attack cycles in process
 	private string targetTag; // Identifier for target
 	private Vector3 currDirection;
@@ -20,6 +22,7 @@ public class EnemyManager : MonoBehaviour {
 	void Start() {
 		target = null;
 		currHealth = MAX_HEALTH;
+		motionStartTime = 0.0f;
 		attackStartTime = 0.0f;
 		hasTarget = false;
 		attacking = false;
@@ -30,7 +33,6 @@ public class EnemyManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 		chooseAction();
-		move();
 	}
 	
 	public void trackTarget(Collider temp) {	
@@ -81,6 +83,7 @@ public class EnemyManager : MonoBehaviour {
 			CapsuleCollider otherTrigger = (CapsuleCollider)temp;
 			radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;	
 		} else {
+			reverseDirection();
 			return false;
 		}
 			
@@ -92,19 +95,16 @@ public class EnemyManager : MonoBehaviour {
 		}
 	}
 	
+	// AI algorithms
 	void chooseAction() {
 		if(!hasTarget) { // Random linear movement
-			float rand = Random.value;
-			if (rand <= 0.25f) {
-				currDirection = Vector3.left;
-			} else if (rand <= 0.50f) {
-				currDirection = Vector3.right;
-			} else if (rand <= 0.75f) {
-				currDirection = Vector3.forward;
-			} else {
-				currDirection = Vector3.back;
+			attacking = false;	
+			if (!moving) {
+				startMotion();
 			}
+			move();
 		} else { // Attack enemy
+			moving = false;
 			if (!attacking) {
 				startAttack();
 			}
@@ -113,7 +113,41 @@ public class EnemyManager : MonoBehaviour {
 	}	
 	
 	void move() {
+		if (moving) {
+			if ((Time.time - motionStartTime) < moveTime) { // Continue previous motion
+				if (currDirection.Equals(Vector3.zero)) {
+					randomizeDirection();
+				}	
+				transform.position += currDirection * movementSpeed * Time.deltaTime;
+			} else { // Stop current phase of movement
+				currDirection = Vector3.zero;
+				moving = false;
+			}
+		}
+	}
 	
+	void startMotion() {
+		moving = true;
+		motionStartTime = Time.time;
+	}
+	
+	void randomizeDirection() {
+		float rand = Random.value;
+		if (rand <= 0.25f) {
+			currDirection = Vector3.left;
+		} else if (rand <= 0.50f) {
+			currDirection = Vector3.right;
+		} else if (rand <= 0.75f) {
+			currDirection = Vector3.forward;
+		} else {
+			currDirection = Vector3.back;
+		}	
+	}
+	
+	// Negates both x and y coordinates; to be called on collision with another object
+	// Also call if trigger object cannot be attacked.
+	public void reverseDirection() { 
+		currDirection = -currDirection;
 	}
 	
 	void startAttack() {
@@ -122,10 +156,10 @@ public class EnemyManager : MonoBehaviour {
 	}	
 	
 	void attack() {
-		if ((Time.time - attackStartTime) > attackTime) {
+		if (attacking && ((Time.time - attackStartTime) > attackTime)) {
 			// Do some attack animation/sound here
 			
-			Display("Attacked the player!");
+			Debug.Log("Attacked the player!");
 			GameObject victim = GameObject.FindWithTag(targetTag);
 			
 			if (targetTag == "Player") {
@@ -133,6 +167,9 @@ public class EnemyManager : MonoBehaviour {
 			} else if (targetTag == "Tower") {
 				victim.GetComponent<TowerManager>().damage(attackPower);
 			}
+			
+			// Complete attack
+			attacking = false;
 		}
 	}
 }

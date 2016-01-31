@@ -19,7 +19,7 @@ public class TowerManager : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		depositStartTime = 0.0f;
-		currHealth = 0.0f;
+		currHealth = MAX_HEALTH;
 		currResources = 0;
 		depositAllowed = false;
 	}
@@ -47,7 +47,7 @@ public class TowerManager : MonoBehaviour {
 		} else {
 			return false;
 		}
-	}
+	}	
 	
 	public void playerInRange(Collider temp) {
 		// Local variable declaration
@@ -70,5 +70,13 @@ public class TowerManager : MonoBehaviour {
 		} else {
 			depositAllowed = true;
 		}
+	}
+	
+	public void damage(float attackPower) {
+		float randSign = (Random.value > 0.5) ? 1.0f : -1.0f;
+		float randOffset = (Random.value)/2.0f;
+		float amount = (1 + randSign * randOffset) * attackPower;
+		Debug.Log("Tower took " + amount + " damage!");
+		currHealth -= amount;
 	}
 }
