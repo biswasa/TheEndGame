@@ -60,15 +60,23 @@ public class EnemyManager : MonoBehaviour {
 			}
 		}
 	}
-	
-	bool targetInRange(Collider temp) {
-		// Check whether target is within trigger sphere
-		Vector3 self = transform.position;
-		Vector3 other = temp.transform.parent.transform.position;
+
+	// Check whether target is within trigger sphere	
+	bool targetInRange(Collider temp) { 
+		// Local variable declaration
+		string tagCheck = temp.transform.parent.gameObject.tag;
+		Vector3 self = transform.position, other = temp.transform.parent.transform.position;
 		GameObject selfTrigger = GameObject.FindWithTag("EnemyTrigger");
-		SphereCollider otherTrigger = (SphereCollider)temp;
-		float radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;
+		float radius = 0.0f;
+		
+		// Check origin of trigger
+		if (tagCheck.Equals("Player")) {
+			SphereCollider otherTrigger = (SphereCollider)temp;			
+			radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;
+		} // TOWER TOWER TOWER DAMN IT
+		
 		Debug.Log("THIS IS IT: " + radius);
+			
 		
 		if (Vector3.Distance(self, other) >= radius) {
 			Debug.Log("Out");
