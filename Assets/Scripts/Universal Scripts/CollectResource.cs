@@ -16,7 +16,8 @@ public class CollectResource : MonoBehaviour {
 	// Increment counter; destroy resource
 	void OnTriggerEnter(Collider other) {
 		float minYPos = transform.parent.gameObject.GetComponent<ResourceManager>().getBaseHeight();
-		if (transform.position.y < (2 * minYPos) && other.transform.parent.gameObject.tag == "Player") {
+		if ((transform.position.y < (2 * minYPos)) && (other.transform.gameObject.tag != "PlayerTrigger") 
+		&& (other.transform.parent.gameObject.tag == "Player")) {
 			
 			// Check whether resource can be collected; collect if possible
 			bool collected = other.gameObject.transform.parent.GetComponent<PlayerManager>().getResource();
