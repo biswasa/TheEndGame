@@ -9,6 +9,9 @@ TagManager:
   - Resource
   - Environment
   - Tower
+  - EnemyTrigger
+  - Trigger
+  - TowerTrigger
   layers:
   - Default
   - TransparentFX

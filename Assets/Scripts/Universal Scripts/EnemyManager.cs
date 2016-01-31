@@ -73,7 +73,12 @@ public class EnemyManager : MonoBehaviour {
 		if (tagCheck.Equals("Player")) {
 			SphereCollider otherTrigger = (SphereCollider)temp;			
 			radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;
-		} // TOWER TOWER TOWER DAMN IT
+		} else if (tagCheck.Equals("Tower")) {
+			CapsuleCollider otherTrigger = (CapsuleCollider)temp;
+			radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;	
+		} else {
+			return false;
+		}
 		
 		Debug.Log("THIS IS IT: " + radius);
 			
