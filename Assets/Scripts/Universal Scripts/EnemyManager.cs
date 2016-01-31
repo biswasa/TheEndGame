@@ -12,11 +12,12 @@ public class EnemyManager : MonoBehaviour {
 	private float currHealth;
 	private float motionStartTime;
 	private float attackStartTime;
-	private bool hasTarget; // Currently pursing player or tower
-	private bool moving; // Movement cycles in process
-	private bool attacking; // Attack cycles in process
-	private string targetTag; // Identifier for target
-	private Vector3 currDirection;
+	private float limit; // Map bounds
+	public bool hasTarget; // Currently pursing player or tower
+	public bool moving; // Movement cycles in process
+	public bool attacking; // Attack cycles in process
+	public string targetTag; // Identifier for target
+	public Vector3 currDirection;
 
 	// Use this for initialization
 	void Start() {
@@ -24,6 +25,7 @@ public class EnemyManager : MonoBehaviour {
 		currHealth = MAX_HEALTH;
 		motionStartTime = 0.0f;
 		attackStartTime = 0.0f;
+		limit = GameObject.FindWithTag("GameController").GetComponent<GameManager>().getMapBounds();
 		hasTarget = false;
 		attacking = false;
 		targetTag = "";
@@ -115,9 +117,20 @@ public class EnemyManager : MonoBehaviour {
 	void move() {
 		if (moving) {
 			if ((Time.time - motionStartTime) < moveTime) { // Continue previous motion
+				// Resume movement 
 				if (currDirection.Equals(Vector3.zero)) {
 					randomizeDirection();
-				}	
+				} 
+				
+				// Get object back on track
+				Debug.Log(limit - 1);
+				Debug.Log(transform.position.x);
+				Debug.Log(transform.position.z);
+				if ((Mathf.Abs(transform.position.x) > (limit - 1)) || (Mathf.Abs(transform.position.z) > (limit - 1))) {
+					//Debug.Log("Reversed");
+					reverseDirection();
+				}
+				
 				transform.position += currDirection * movementSpeed * Time.deltaTime;
 			} else { // Stop current phase of movement
 				currDirection = Vector3.zero;
@@ -142,12 +155,14 @@ public class EnemyManager : MonoBehaviour {
 		} else {
 			currDirection = Vector3.back;
 		}	
+		startMotion();
 	}
 	
 	// Negates both x and y coordinates; to be called on collision with another object
 	// Also call if trigger object cannot be attacked.
 	public void reverseDirection() { 
 		currDirection = -currDirection;
+		startMotion();
 	}
 	
 	void startAttack() {

@@ -4,14 +4,10 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
 	public GameObject resourceSpawner;
-
-	private float mapBounds;
-	private int resources;
+	private float mapBounds = 15.0f;
 
 	// Use this for initialization
 	void Start () {
-		mapBounds = 15.0f;	
-		resources = 0;
 	}
 	
 	// Update is called once per frame
@@ -19,4 +15,9 @@ public class GameManager : MonoBehaviour {
 		// Make sure spawner is not out of bounds
 		resourceSpawner.GetComponent<ResourceSpawner>().reset(mapBounds);
 	}	
+	
+	public float getMapBounds() {
+		return mapBounds;
+	}
+
 }
