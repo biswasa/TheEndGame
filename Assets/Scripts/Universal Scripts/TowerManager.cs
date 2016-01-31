@@ -11,6 +11,7 @@ public class TowerManager : MonoBehaviour {
 		GAMMA = 50}
 	; // Number of resources required to level up
 	private float depositDelay = 2.0f; // Time taken to deposit 1 unit resource
+	private float deathTime = 3.0f;
 	private float depositStartTime;
 	private float currHealth;
 	public int currResources;
@@ -88,6 +89,11 @@ public class TowerManager : MonoBehaviour {
 	}
 	
 	void die() {
-		// Do something here	
+		// Death sound/animation here
+		float startDeath = Time.time;
+		while (Time.time - startDeath < deathTime) {
+			// Do nothing/loop effects
+		}	
+		Application.LoadLevel("GameOver");
 	}
 }
