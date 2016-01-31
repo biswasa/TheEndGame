@@ -8,7 +8,7 @@ public class ResourceSpawner: MonoBehaviour {
 	private const float MIN_RESPAWN_TIME = 10.0f;
 	private float resourceSpawnerSpeed = 15.0f;
 	private int maxResources = 5;
-	private int resources;
+	public int resources;
 	private float lastRespawn;
 
 	// Use this for initialization

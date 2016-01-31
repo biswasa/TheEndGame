@@ -44,21 +44,23 @@ public class EnemyManager : MonoBehaviour {
 			targetTag = target.transform.parent.gameObject.tag;
 		}
 		checkTag = temp.transform.parent.gameObject.tag;
-	
+		Debug.Log(checkTag);
+		
 		// Check validity of target
 		if (targetInRange(temp, triggerEnter)) {
-			if (targetTag.Equals("")) { // No target presently
+			if (targetTag == "") { // No target presently
+				Debug.Log("Assigned"); // THIS IS WHERE I CONTINUE; NULL REFERENCE SOMEWHERE
 				hasTarget = true;	
 				target = temp;
 			} else { // Target already acquired; give priority to tower
-				if (checkTag.Equals("Tower")) {
+				if (checkTag == "Tower") {
 					target = temp;
 				}
 			}
 		} else {
-			if (!targetTag.Equals("")) { // Prior target was present
+			if (targetTag != "") { // Prior target was present
 				// Check whether prior and current target are one and the same; target goes out of range
-				if (targetTag.Equals(checkTag)) { 
+				if (targetTag == checkTag) { 
 					hasTarget = false;
 					target = null;
 				} else { // Prior target is still in range
@@ -75,25 +77,25 @@ public class EnemyManager : MonoBehaviour {
 		// Local variable declaration
 		GameObject selfTrigger = GameObject.FindWithTag("EnemyTrigger");
 		Vector3 self = selfTrigger.transform.position, other = temp.transform.position;
-		float radius = 0.0f;
+		float distance = 0.0f;
+		string checkTag = temp.transform.parent.gameObject.tag;	
 		
-		//Debug.Log(targetTag);
 		// Check origin of trigger
-		if (targetTag.Equals("Player")) {
+		if (checkTag == "Player") {
 			SphereCollider otherTrigger = (SphereCollider)temp;			
-			radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;
-		} else if (targetTag.Equals("Tower")) {
+			distance = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;
+		} else if (checkTag == "Tower") {
 			CapsuleCollider otherTrigger = (CapsuleCollider)temp;
-			radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;	
+			distance = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;	
 		} else {
-			if (triggerEnter) {// Don't reverse again on exiting trigger!
+			if (triggerEnter && (checkTag == "Environment")) { // Don't reverse again on exiting trigger!
 				reverseDirection();
 			}
 			return false;
 		}
 			
 		// Compare actual distance to threshold	
-		if (Vector3.Distance(self, other) >= radius) {
+		if (Mathf.Sqrt(Mathf.Pow(self.x - other.x, 2) + Mathf.Pow(self.z - other.z, 2)) >= distance) {
 			return false;
 		} else {
 			return true;
@@ -121,16 +123,9 @@ public class EnemyManager : MonoBehaviour {
 		if (moving) {
 			if ((Time.time - motionStartTime) < moveTime) { // Continue previous motion
 				// Resume movement 
-				if (currDirection.Equals(Vector3.zero)) {
+				if (currDirection == Vector3.zero) {
 					randomizeDirection();
-				} 
-				
-				// Get object back on track
-				if ((Mathf.Abs(transform.position.x) > (limit - 1)) || (Mathf.Abs(transform.position.z) > (limit - 1))) {
-					Debug.Log("Reversed");
-					reverseDirection();
-				}
-				
+				} 			
 				transform.position += currDirection * movementSpeed * Time.deltaTime;
 			} else { // Stop current phase of movement
 				currDirection = Vector3.zero;
@@ -155,14 +150,12 @@ public class EnemyManager : MonoBehaviour {
 		} else {
 			currDirection = Vector3.back;
 		}	
-		//startMotion();
 	}
 	
 	// Negates both x and y coordinates; to be called on collision with another object
 	// Also call if trigger object cannot be attacked.
 	public void reverseDirection() { 
 		currDirection = -currDirection;
-		//startMotion();
 	}
 	
 	void startAttack() {
@@ -174,12 +167,13 @@ public class EnemyManager : MonoBehaviour {
 		if (attacking && ((Time.time - attackStartTime) > attackTime)) {
 			// Do some attack animation/sound here
 			
-			Debug.Log("Attacked the player!");
-			GameObject victim = GameObject.FindWithTag(targetTag);
+			GameObject victim = target.transform.parent.gameObject;
 			
 			if (targetTag == "Player") {
+				Debug.Log("Attacked the player");
 				victim.GetComponent<PlayerManager>().damage(attackPower);
 			} else if (targetTag == "Tower") {
+				Debug.Log("Attacked the tower");
 				victim.GetComponent<TowerManager>().damage(attackPower);
 			}
 			

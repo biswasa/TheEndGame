@@ -67,7 +67,9 @@ public class PlayerManager : MonoBehaviour {
 	
 	public void damage(float attackPower) {
 		float randSign = (Random.value > 0.5) ? 1.0f : -1.0f;
-		float randOffset = (Random.value)/2;
-		currHealth -= randSign * randOffset * attackPower;
+		float randOffset = (Random.value)/2.0f;
+		float amount = (1 + randSign * randOffset) * attackPower;
+		Debug.Log("Player took " + amount + " damage!");
+		currHealth -= amount;
 	}
 }
