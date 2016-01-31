@@ -282,21 +282,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea241e17ac7974f1ba4150da28b4eaba, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &989177896 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 114380, guid: 2dfa4cb4a8c4d4a09a3267b3344133ea, type: 2}
-  m_PrefabInternal: {fileID: 1515461135}
---- !u!114 &989177899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 989177896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 276488eab717842c2a56c686384ba40c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1040752316 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 172106, guid: 1ba65e353d9094379a3c890c0db300b1, type: 2}
@@ -314,7 +299,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 458392, guid: 84789920e37bc402d8b8acbab24ef52b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 458392, guid: 84789920e37bc402d8b8acbab24ef52b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -350,7 +335,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11419188, guid: 84789920e37bc402d8b8acbab24ef52b, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 496208, guid: 84789920e37bc402d8b8acbab24ef52b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.55
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -406,7 +395,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 459784, guid: 6d9d571f95fc74f2093533119277ae71, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 459784, guid: 6d9d571f95fc74f2093533119277ae71, type: 2}
       propertyPath: m_LocalPosition.z
@@ -486,7 +475,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 473312, guid: 2dfa4cb4a8c4d4a09a3267b3344133ea, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 473312, guid: 2dfa4cb4a8c4d4a09a3267b3344133ea, type: 2}
       propertyPath: m_LocalPosition.z
@@ -515,6 +504,14 @@ Prefab:
     - target: {fileID: 180446, guid: 2dfa4cb4a8c4d4a09a3267b3344133ea, type: 2}
       propertyPath: m_TagString
       value: EnemyTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 463652, guid: 2dfa4cb4a8c4d4a09a3267b3344133ea, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 479822, guid: 2dfa4cb4a8c4d4a09a3267b3344133ea, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2dfa4cb4a8c4d4a09a3267b3344133ea, type: 2}

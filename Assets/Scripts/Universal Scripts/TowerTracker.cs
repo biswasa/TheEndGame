@@ -16,7 +16,6 @@ public class TowerTracker : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other) {
-		Debug.Log("Call me");
 		transform.parent.gameObject.GetComponent<TowerManager>().playerInRange(other);
 	}
 	

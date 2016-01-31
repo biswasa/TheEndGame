@@ -3,26 +3,23 @@ using System.Collections;
 
 public class ResourceSpawner: MonoBehaviour {
 
-	public Transform resourcePrefab;		
+	public Transform resourcePrefab;
 	private Vector3 initialPosition;
-	
 	private const float MIN_RESPAWN_TIME = 10.0f;
-	
 	private float resourceSpawnerSpeed = 15.0f;
 	private int maxResources = 5;
 	private int resources;
-	
 	private float lastRespawn;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		resources = 0;	
 		lastRespawn = Time.time;
 		initialPosition = transform.position;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update() {
 		moveResourceSpawner();
 		if ((resources < maxResources) && ((Time.time - lastRespawn) > (1 + Random.value) * MIN_RESPAWN_TIME)) {
 			respawn();
@@ -34,11 +31,9 @@ public class ResourceSpawner: MonoBehaviour {
 		Object spawnedResource = Instantiate(resourcePrefab, transform.position, Quaternion.identity);
 		
 		// Sanity checking
-		if(spawnedResource != null) {
+		if (spawnedResource != null) {
 			++resources;
 			lastRespawn = Time.time;
-		} else {
-			Debug.Log ("I don't exist");
 		}
 	}
 		
@@ -66,7 +61,7 @@ public class ResourceSpawner: MonoBehaviour {
 	
 	// Called when player collects a resource
 	public void collectResource() {
-		--resources	;
+		--resources;
 	}
 	
 }

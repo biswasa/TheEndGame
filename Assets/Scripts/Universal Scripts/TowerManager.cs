@@ -13,8 +13,8 @@ public class TowerManager : MonoBehaviour {
 	private float depositDelay = 2.0f; // Time taken to deposit 1 unit resource
 	private float depositStartTime;
 	private float currHealth;
-	private int currResources;
-	public bool depositAllowed;
+	public int currResources;
+	private bool depositAllowed;
 	
 	// Use this for initialization
 	void Start() {
@@ -66,10 +66,8 @@ public class TowerManager : MonoBehaviour {
 		
 		// Compare actual distance to threshold	
 		if (Vector3.Distance(self, other) >= radius) {
-			Debug.Log("Player Out");
 			depositAllowed = false;
 		} else {
-			Debug.Log("Player In");
 			depositAllowed = true;
 		}
 	}

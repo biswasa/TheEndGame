@@ -29,19 +29,15 @@ public class EnemyManager : MonoBehaviour {
 			currTag = target.transform.parent.gameObject.tag;
 		}
 		checkTag = temp.transform.parent.gameObject.tag;
-		
-		Debug.Log("current = " + currTag);
-		Debug.Log("checking = " + checkTag);
+	
 		// Check validity of target
 		if (targetInRange(temp)) {
 			if (currTag.Equals("")) { // No target presently
 				hasTarget = true;	
 				target = temp;
-				Debug.Log("Target acquired");
 			} else { // Target already acquired; give priority to tower
 				if (checkTag.Equals("Tower")) {
 					target = temp;
-					Debug.Log("Target switched");
 				}
 			}
 		} else {
@@ -50,13 +46,11 @@ public class EnemyManager : MonoBehaviour {
 				if (currTag.Equals(checkTag)) {
 					hasTarget = false;
 					target = null;
-					Debug.Log("Target lost");
 				} else { // Prior target is still in range
 					hasTarget = true;
 				}
 			} else { // No target exists
 				hasTarget = false;
-				Debug.Log("No target");
 			}
 		}
 	}
@@ -82,10 +76,8 @@ public class EnemyManager : MonoBehaviour {
 			
 		// Compare actual distance to threshold	
 		if (Vector3.Distance(self, other) >= radius) {
-			Debug.Log("Out");
 			return false;
 		} else {
-			Debug.Log("In");
 			return true;
 		}
 	}

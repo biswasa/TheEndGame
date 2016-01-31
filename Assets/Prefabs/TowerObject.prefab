@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 459784}
   - 135: {fileID: 13501686}
+  - 114: {fileID: 11486242}
   m_Layer: 0
   m_Name: TowerSphere
   m_TagString: Untagged
@@ -59,6 +60,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417234}
+  - 114: {fileID: 11407996}
   m_Layer: 0
   m_Name: TowerObject
   m_TagString: Tower
@@ -198,6 +200,28 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11407996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b4dad27316a48579bda07c8670bee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11486242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22beb3f72ed3a45c0ac532a652664a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13501686
 SphereCollider:
   m_ObjectHideFlags: 1
