@@ -12,7 +12,6 @@ public class EnemyManager : MonoBehaviour {
 	private float currHealth;
 	private float motionStartTime;
 	private float attackStartTime;
-	private float limit; // Map bounds
 	public bool hasTarget; // Currently pursing player or tower
 	public bool moving; // Movement cycles in process
 	public bool attacking; // Attack cycles in process
@@ -25,7 +24,6 @@ public class EnemyManager : MonoBehaviour {
 		currHealth = MAX_HEALTH;
 		motionStartTime = 0.0f;
 		attackStartTime = 0.0f;
-		limit = GameObject.FindWithTag("GameController").GetComponent<GameManager>().getMapBounds();
 		hasTarget = false;
 		attacking = false;
 		targetTag = "";
@@ -173,14 +171,33 @@ public class EnemyManager : MonoBehaviour {
 			
 			if (targetTag == "Player") {
 				Debug.Log("Attacked the player");
-				victim.GetComponent<PlayerManager>().damage(attackPower);
+				victim.GetComponent<PlayerManager>().takeDamage(attackPower);
 			} else if (targetTag == "Tower") {
 				Debug.Log("Attacked the tower");
-				victim.GetComponent<TowerManager>().damage(attackPower);
+				victim.GetComponent<TowerManager>().takeDamage(attackPower);
 			}
 			
 			// Complete attack
 			attacking = false;
 		}
+	}
+	
+	public void takeDamage(float attackPower) {
+		if (currHealth > 0) {
+			float randSign = (Random.value > 0.5) ? 1.0f : -1.0f;
+			float randOffset = (Random.value) / 2.0f;
+			float amount = (1 + randSign * randOffset) * attackPower;
+			Debug.Log("Enemy took " + amount + " damage!");
+			currHealth -= amount;	
+		}
+		
+		if (currHealth < 0) { // Don't allow negative values
+			currHealth = 0;
+			die();
+		}
+	}
+	
+	void die() {
+		// Do something here	
 	}
 }

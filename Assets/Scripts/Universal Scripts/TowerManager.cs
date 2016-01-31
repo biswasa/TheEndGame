@@ -72,11 +72,22 @@ public class TowerManager : MonoBehaviour {
 		}
 	}
 	
-	public void damage(float attackPower) {
-		float randSign = (Random.value > 0.5) ? 1.0f : -1.0f;
-		float randOffset = (Random.value)/2.0f;
-		float amount = (1 + randSign * randOffset) * attackPower;
-		Debug.Log("Tower took " + amount + " damage!");
-		currHealth -= amount;
+	public void takeDamage(float attackPower) {
+		if (currHealth > 0) {
+			float randSign = (Random.value > 0.5) ? 1.0f : -1.0f;
+			float randOffset = (Random.value) / 2.0f;
+			float amount = (1 + randSign * randOffset) * attackPower;
+			Debug.Log("Tower took " + amount + " damage!");
+			currHealth -= amount;	
+		}
+		
+		if (currHealth <= 0) { // Object dies 
+			currHealth = 0; // Don't allow negative values
+			die();
+		}
+	}
+	
+	void die() {
+		// Do something here	
 	}
 }
