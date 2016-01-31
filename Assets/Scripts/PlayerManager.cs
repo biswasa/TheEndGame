@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour {
 	private const int MAX_RESOURCES = 10;
 	private float movementSpeed = 10.0f;
 	private float currHealth;
+	private float attackPower = 5.0f;
 	private int currResources;
 	
 	// Use this for initialization
