@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour {
 	private const float MAX_HEALTH = 20;
 	private float movementSpeed = 5.0f;
 	private float attackPower = 3.0f;
+	private float fudgeFactor = 0.05f; // Account for edge case spherical trigger detection
 	private float currHealth;
 	private bool hasTarget; // Currently pursing player or tower
 
@@ -64,16 +65,17 @@ public class EnemyManager : MonoBehaviour {
 		// Check whether target is within trigger sphere
 		Vector3 self = transform.position;
 		Vector3 other = temp.transform.parent.transform.position;
-		GameObject sphereTrigger = GameObject.FindWithTag("EnemyTrigger");
-		float radius = sphereTrigger.GetComponent<SphereCollider>().radius;
+		GameObject selfTrigger = GameObject.FindWithTag("EnemyTrigger");
+		SphereCollider otherTrigger = (SphereCollider)temp;
+		float radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;
 		Debug.Log("THIS IS IT: " + radius);
 		
-		if (Vector3.Distance(self, other) < radius) {
-			Debug.Log("In");
-			return true;
-		} else {
+		if (Vector3.Distance(self, other) >= radius) {
 			Debug.Log("Out");
 			return false;
+		} else {
+			Debug.Log("In");
+			return true;
 		}
 	}
 }
