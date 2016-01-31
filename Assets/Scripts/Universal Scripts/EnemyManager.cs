@@ -198,6 +198,7 @@ public class EnemyManager : MonoBehaviour {
 	}
 	
 	void die() {
-		// Do something here	
+		Debug.Log("Enemy died");
+		Destroy(transform.gameObject);
 	}
 }

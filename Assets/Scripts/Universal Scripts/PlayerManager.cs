@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour {
 	}
 	
 	void attack() {
-		if (inRange && Input.GetKeyDown(KeyCode.KeypadEnter)) {
+		if (inRange && Input.GetKeyDown(KeyCode.K)) {
 			target.transform.parent.gameObject.GetComponent<EnemyManager>().takeDamage(attackPower);
 		}
 	}
@@ -75,7 +75,6 @@ public class PlayerManager : MonoBehaviour {
 	
 	// Check whether target is within trigger sphere	
 	public void targetInRange(Collider temp) { 
-		Debug.Log("HAA");
 		// Local variable declaration
 		GameObject selfTrigger = GameObject.FindWithTag("PlayerTrigger");
 		Vector3 self = selfTrigger.transform.position, other = temp.transform.position;

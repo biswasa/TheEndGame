@@ -12,6 +12,7 @@ TagManager:
   - EnemyTrigger
   - Trigger
   - TowerTrigger
+  - PlayerTrigger
   layers:
   - Default
   - TransparentFX
