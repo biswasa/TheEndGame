@@ -50,9 +50,9 @@ public class TowerManager : MonoBehaviour {
 		if ((Time.time - depositStartTime) > depositDelay) {
 			depositStartTime = Time.time;
 			++currResources;	
-			if (currResources == RESOURCE_TIERS.GAMMA) {
+			if (currResources == (int)RESOURCE_TIERS.GAMMA) {
 				win();			
-			} else if ((currResources == RESOURCE_TIERS.BETA) || (currResources == RESOURCE_TIERS.ALPHA)) {
+			} else if ((currResources == (int)RESOURCE_TIERS.BETA) || (currResources == (int)RESOURCE_TIERS.ALPHA)) {
 				levelUp = true;
 			}
 			return true;	
