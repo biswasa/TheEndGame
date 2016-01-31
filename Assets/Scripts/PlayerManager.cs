@@ -119,4 +119,8 @@ public class PlayerManager : MonoBehaviour {
 	void die() {
 		// Do something here	
 	}
+	
+	public float getPercentageHealth() {
+		return currHealth/MAX_HEALTH;
+	}
 }

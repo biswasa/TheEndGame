@@ -120,4 +120,17 @@ public class TowerManager : MonoBehaviour {
 	public float getPercentageHealth() {
 		return currHealth/MAX_HEALTH;
 	}
+	
+	public float getPercentageResources() {
+		int max = 0;
+		if (currResources < (int)RESOURCE_TIERS.ALPHA) {
+			max = (int)RESOURCE_TIERS.ALPHA;
+		} else if (currResources < (int)RESOURCE_TIERS.BETA) {
+			max = (int)RESOURCE_TIERS.BETA;
+		} else {
+			max = (int)RESOURCE_TIERS.GAMMA;
+		}
+		
+		return currResources/(float)max;
+	}
 }
