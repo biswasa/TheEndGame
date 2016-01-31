@@ -14,15 +14,10 @@ public class EnemyTracker : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other) {
-		transform.parent.gameObject.GetComponent<EnemyManager>().trackTarget(other);
+		transform.parent.gameObject.GetComponent<EnemyManager>().trackTarget(other, true);
 	}
 	
 	void OnTriggerExit(Collider other) {
-		transform.parent.gameObject.GetComponent<EnemyManager>().trackTarget(other);
-	}
-	
-	void OnCollisionEnter(Collision collision) {
-		Debug.Log("Pika");
-		transform.parent.gameObject.GetComponent<EnemyManager>().reverseDirection();
+		transform.parent.gameObject.GetComponent<EnemyManager>().trackTarget(other, false);
 	}
 }

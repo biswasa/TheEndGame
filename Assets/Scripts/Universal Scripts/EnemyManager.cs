@@ -37,7 +37,7 @@ public class EnemyManager : MonoBehaviour {
 		chooseAction();
 	}
 	
-	public void trackTarget(Collider temp) {	
+	public void trackTarget(Collider temp, bool triggerEnter) {	
 		// Identify tags
 		string checkTag;
 		if (target != null) {	
@@ -46,7 +46,7 @@ public class EnemyManager : MonoBehaviour {
 		checkTag = temp.transform.parent.gameObject.tag;
 	
 		// Check validity of target
-		if (targetInRange(temp)) {
+		if (targetInRange(temp, triggerEnter)) {
 			if (targetTag.Equals("")) { // No target presently
 				hasTarget = true;	
 				target = temp;
@@ -71,12 +71,13 @@ public class EnemyManager : MonoBehaviour {
 	}
 
 	// Check whether target is within trigger sphere	
-	bool targetInRange(Collider temp) { 
+	bool targetInRange(Collider temp, bool triggerEnter) { 
 		// Local variable declaration
 		GameObject selfTrigger = GameObject.FindWithTag("EnemyTrigger");
 		Vector3 self = selfTrigger.transform.position, other = temp.transform.position;
 		float radius = 0.0f;
 		
+		//Debug.Log(targetTag);
 		// Check origin of trigger
 		if (targetTag.Equals("Player")) {
 			SphereCollider otherTrigger = (SphereCollider)temp;			
@@ -85,7 +86,9 @@ public class EnemyManager : MonoBehaviour {
 			CapsuleCollider otherTrigger = (CapsuleCollider)temp;
 			radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;	
 		} else {
-			reverseDirection();
+			if (triggerEnter) {// Don't reverse again on exiting trigger!
+				reverseDirection();
+			}
 			return false;
 		}
 			
@@ -99,7 +102,7 @@ public class EnemyManager : MonoBehaviour {
 	
 	// AI algorithms
 	void chooseAction() {
-		if(!hasTarget) { // Random linear movement
+		if (!hasTarget) { // Random linear movement
 			attacking = false;	
 			if (!moving) {
 				startMotion();
@@ -112,7 +115,7 @@ public class EnemyManager : MonoBehaviour {
 			}
 			attack();	
 		}
-	}	
+	}
 	
 	void move() {
 		if (moving) {
@@ -123,11 +126,8 @@ public class EnemyManager : MonoBehaviour {
 				} 
 				
 				// Get object back on track
-				Debug.Log(limit - 1);
-				Debug.Log(transform.position.x);
-				Debug.Log(transform.position.z);
 				if ((Mathf.Abs(transform.position.x) > (limit - 1)) || (Mathf.Abs(transform.position.z) > (limit - 1))) {
-					//Debug.Log("Reversed");
+					Debug.Log("Reversed");
 					reverseDirection();
 				}
 				
@@ -155,20 +155,20 @@ public class EnemyManager : MonoBehaviour {
 		} else {
 			currDirection = Vector3.back;
 		}	
-		startMotion();
+		//startMotion();
 	}
 	
 	// Negates both x and y coordinates; to be called on collision with another object
 	// Also call if trigger object cannot be attacked.
 	public void reverseDirection() { 
 		currDirection = -currDirection;
-		startMotion();
+		//startMotion();
 	}
 	
 	void startAttack() {
 		attacking = true;
 		attackStartTime = Time.time;
-	}	
+	}
 	
 	void attack() {
 		if (attacking && ((Time.time - attackStartTime) > attackTime)) {
