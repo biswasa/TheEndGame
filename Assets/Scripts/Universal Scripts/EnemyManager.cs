@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour {
 	private float currHealth;
 	private float motionStartTime;
 	private float attackStartTime;
+	private float colliderRadius;
 	public bool hasTarget; // Currently pursing player or tower
 	public bool moving; // Movement cycles in process
 	public bool attacking; // Attack cycles in process
@@ -31,10 +32,10 @@ public class EnemyManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update() {
+	void Update() {	
 		chooseAction();
 	}
-	
+
 	public void trackTarget(Collider temp, bool triggerEnter) {	
 		// Identify tags
 		string checkTag;
@@ -199,6 +200,8 @@ public class EnemyManager : MonoBehaviour {
 	
 	void die() {
 		Debug.Log("Enemy died");
+		EnemySpawner master = GameObject.FindWithTag("EnemyController").GetComponent<EnemySpawner>();
+		master.killEnemy();
 		Destroy(transform.gameObject);
 	}
 }
