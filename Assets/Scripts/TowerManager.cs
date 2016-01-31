@@ -3,6 +3,10 @@ using System.Collections;
 
 public class TowerManager : MonoBehaviour {
 
+	public int currResources;
+	public bool levelUp;
+	public bool victory;
+	
 	private const float MAX_HEALTH = 100.0f;
 	private enum RESOURCE_TIERS {
 		ZERO = 0,
@@ -11,10 +15,10 @@ public class TowerManager : MonoBehaviour {
 		GAMMA = 50}
 	; // Number of resources required to level up
 	private float depositDelay = 2.0f; // Time taken to deposit 1 unit resource
-	private float deathTime = 3.0f;
+	private float deathTime = 3.0f; // Time required for death animation/sound
+	private float winTime = 3.0f; // Time required for victory animation/sound
 	private float depositStartTime;
 	private float currHealth;
-	public int currResources;
 	private bool depositAllowed;
 	
 	// Use this for initialization
@@ -23,6 +27,8 @@ public class TowerManager : MonoBehaviour {
 		currHealth = MAX_HEALTH;
 		currResources = 0;
 		depositAllowed = false;
+		levelUp = false;
+		victory = false;
 	}
 	
 	// Update is called once per frame
@@ -44,6 +50,11 @@ public class TowerManager : MonoBehaviour {
 		if ((Time.time - depositStartTime) > depositDelay) {
 			depositStartTime = Time.time;
 			++currResources;	
+			if (currResources == RESOURCE_TIERS.GAMMA) {
+				win();			
+			} else if ((currResources == RESOURCE_TIERS.BETA) || (currResources == RESOURCE_TIERS.ALPHA)) {
+				levelUp = true;
+			}
 			return true;	
 		} else {
 			return false;
@@ -95,5 +106,18 @@ public class TowerManager : MonoBehaviour {
 			// Do nothing/loop effects
 		}	
 		Application.LoadLevel("GameOver");
+	}
+	
+	void win() {
+		// Victory sound/animation here
+		float startWin = Time.time;
+		while (Time.time - startWin < deathTime) {
+			// Do nothing/loop effects
+		}	
+		Application.LoadLevel("Victory");
+	}
+
+	public float getPercentageHealth() {
+		return currHealth/MAX_HEALTH;
 	}
 }
