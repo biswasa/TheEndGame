@@ -65,8 +65,8 @@ public class EnemyManager : MonoBehaviour {
 	bool targetInRange(Collider temp) { 
 		// Local variable declaration
 		string tagCheck = temp.transform.parent.gameObject.tag;
-		Vector3 self = transform.position, other = temp.transform.parent.transform.position;
 		GameObject selfTrigger = GameObject.FindWithTag("EnemyTrigger");
+		Vector3 self = selfTrigger.transform.position, other = temp.transform.position;
 		float radius = 0.0f;
 		
 		// Check origin of trigger
@@ -79,10 +79,8 @@ public class EnemyManager : MonoBehaviour {
 		} else {
 			return false;
 		}
-		
-		Debug.Log("THIS IS IT: " + radius);
 			
-		
+		// Compare actual distance to threshold	
 		if (Vector3.Distance(self, other) >= radius) {
 			Debug.Log("Out");
 			return false;

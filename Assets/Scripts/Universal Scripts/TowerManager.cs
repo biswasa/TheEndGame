@@ -4,23 +4,28 @@ using System.Collections;
 public class TowerManager : MonoBehaviour {
 
 	private const float MAX_HEALTH = 100.0f;
-	private enum RESOURCE_TIERS {ZERO=0, ALPHA=10, BETA=25, GAMMA=50}; // Number of resources required to level up
+	private enum RESOURCE_TIERS {
+		ZERO = 0,
+		ALPHA = 10,
+		BETA = 25,
+		GAMMA = 50}
+	; // Number of resources required to level up
 	private float depositDelay = 2.0f; // Time taken to deposit 1 unit resource
 	private float depositStartTime;
 	private float currHealth;
 	private int currResources;
-	private bool depositAllowed;
+	public bool depositAllowed;
 	
 	// Use this for initialization
-	void Start () {
-		depositStartTime = 0.0f	;
+	void Start() {
+		depositStartTime = 0.0f;
 		currHealth = 0.0f;
 		currResources = 0;
 		depositAllowed = false;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update() {
 	
 	}
 	
@@ -47,16 +52,15 @@ public class TowerManager : MonoBehaviour {
 	public void playerInRange(Collider temp) {
 		// Local variable declaration
 		string tagCheck = temp.transform.parent.gameObject.tag;
-		Vector3 self = transform.position, other = temp.transform.parent.transform.position;
-		GameObject selfTrigger = GameObject.FindWithTag("TowerTrigger");
+		GameObject selfTrigger = GameObject.FindWithTag("TowerTrigger");	
+		Vector3 self = selfTrigger.transform.position, other = temp.transform.position;
 		float radius = 0.0f;
 		
 		// Check origin of trigger
 		if (tagCheck.Equals("Player")) {
 			SphereCollider otherTrigger = (SphereCollider)temp;			
 			radius = selfTrigger.GetComponent<SphereCollider>().radius + otherTrigger.radius;
-		} else {
-			depositAllowed = false;
+		} else { // Not interested in non-player objects
 			return;
 		}
 		
