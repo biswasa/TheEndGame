@@ -34,13 +34,13 @@ public class PlayerManager : MonoBehaviour {
 		Vector3 moveVector = new Vector3(0, 0, 0);
 		
 		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
-			moveVector.x -= movementSpeed * Time.deltaTime;
-		} else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
 			moveVector.x += movementSpeed * Time.deltaTime;
+		} else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
+			moveVector.x -= movementSpeed * Time.deltaTime;
 		} else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {	
-			moveVector.z -= movementSpeed * Time.deltaTime;
-		} else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
 			moveVector.z += movementSpeed * Time.deltaTime;
+		} else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
+			moveVector.z -= movementSpeed * Time.deltaTime;
 		}
 		
 		transform.position += moveVector;
