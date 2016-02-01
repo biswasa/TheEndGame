@@ -111,7 +111,7 @@ public class TowerManager : MonoBehaviour {
 	void win() {
 		// Victory sound/animation here
 		float startWin = Time.time;
-		while (Time.time - startWin < deathTime) {
+		while (Time.time - startWin < winTime) {
 			// Do nothing/loop effects
 		}	
 		Application.LoadLevel("Victory");
